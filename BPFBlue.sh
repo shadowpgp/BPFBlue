@@ -25,6 +25,7 @@ if [ "$1" == "-h" ] || [ "$1" == "--help" ] || [ "$#" -eq 0 ]; then
     echo "  bind     trace syscall bind (binding of a network socket to a local address)"
     echo "  listen   trace syscall listen (listening for incoming connections on a network socket)"
     echo "  connect  trace syscall connect (connecting to a remote address)"
+    echo "  events   trace kernel events (listen to the kernel ring 0)"
     echo ""
     echo "This script uses eBPF and bpftrace to passively monitor the behavior of system calls on a Linux system."
     echo "The script can be used to gain insights into system activity, detect malicious activity, or monitor system performance."
@@ -63,6 +64,9 @@ connect_command="sudo bpftrace -e 'tracepoint:syscalls:sys_enter_connect { print
 # Clone syscall
 clone_process="sudo bpftrace -e 'kprobe:sys_clone { printf(\"Clone syscall traced : Flags - %x, PID - %d\\n\", arg1, pid); }'"
 
+# Event trace
+event_command="sudo bpftrace -e 'tracepoint:sched:sched_switch { printf(\"Event : %s %s\\n\", args->prev_comm, args->next_comm); }'"
+
 probe="$1"
 
 case "$probe" in
@@ -96,6 +100,9 @@ case "$probe" in
     "clone")
         command=$clone_process
         ;;
+    "event")
+        command=$event_command
+        ;;
     *)
         echo "Invalid probe. Use -h or --help to see the available probes."
         exit 1
@@ -109,7 +116,7 @@ echo """
     █       █   █▄█ █   █▄▄▄█       █   █   █  █▄█  █   █▄▄▄ 
     █  ▄   ██    ▄▄▄█    ▄▄▄█  ▄   ██   █▄▄▄█       █    ▄▄▄█
     █ █▄█   █   █   █   █   █ █▄█   █       █       █   █▄▄▄ 
-    █▄▄▄▄▄▄▄█▄▄▄█   █▄▄▄█   █▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█ V1.0
+    █▄▄▄▄▄▄▄█▄▄▄█   █▄▄▄█   █▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█ V1.1
 
     Created by @shadowpgp aka fcn
 """
