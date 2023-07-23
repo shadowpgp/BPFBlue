@@ -8,7 +8,7 @@ if [ "$1" == "-h" ] || [ "$1" == "--help" ] || [ "$#" -eq 0 ]; then
     █       █   █▄█ █   █▄▄▄█       █   █   █  █▄█  █   █▄▄▄ 
     █  ▄   ██    ▄▄▄█    ▄▄▄█  ▄   ██   █▄▄▄█       █    ▄▄▄█
     █ █▄█   █   █   █   █   █ █▄█   █       █       █   █▄▄▄ 
-    █▄▄▄▄▄▄▄█▄▄▄█   █▄▄▄█   █▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█ V1.0
+    █▄▄▄▄▄▄▄█▄▄▄█   █▄▄▄█   █▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█ V1.1
 
     Created by @shadowpgp aka fcn
     """
@@ -25,7 +25,6 @@ if [ "$1" == "-h" ] || [ "$1" == "--help" ] || [ "$#" -eq 0 ]; then
     echo "  bind     trace syscall bind (binding of a network socket to a local address)"
     echo "  listen   trace syscall listen (listening for incoming connections on a network socket)"
     echo "  connect  trace syscall connect (connecting to a remote address)"
-    echo "  clone    trace syscall clone (creation of a new process)"
     echo ""
     echo "This script uses eBPF and bpftrace to passively monitor the behavior of system calls on a Linux system."
     echo "The script can be used to gain insights into system activity, detect malicious activity, or monitor system performance."
