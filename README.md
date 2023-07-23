@@ -15,7 +15,7 @@ sudo apt install sudo bpftrace tcpdump
 Warning ! Program using sudo.
 
 ```bash
-git clone https://github.com/L4LS/BPFBlue.git
+git clone https://github.com/shadowpgp/BPFBlue.git
 cd BPFBlue
 sudo cp BPFBlue.sh /usr/bin/bpfblue
 sudo chmod +x /usr/bin/bpfblue
