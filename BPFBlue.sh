@@ -116,7 +116,7 @@ case "$probe" in
     "clone")
         command=$clone_process
         ;;
-    "events")
+    "event")
         command=$event_command
         ;;
     *)
