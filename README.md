@@ -49,6 +49,7 @@ Available probes:
   bind     trace syscall bind (binding of a network socket to a local address)
   listen   trace syscall listen (listening for incoming connections on a network socket)
   connect  trace syscall connect (connecting to a remote address)
+  event    trace kernel events (listen to the kernel ring 0)
 
 This script uses eBPF and bpftrace to passively monitor the behavior of system calls on a Linux system.
 The script can be used to gain insights into system activity, detect malicious activity, or monitor system performance.
