@@ -41,7 +41,7 @@ if [ "$1" == "-h" ] || [ "$1" == "--help" ] || [ "$#" -eq 0 ]; then
     echo "  bind     trace syscall bind (binding of a network socket to a local address)"
     echo "  listen   trace syscall listen (listening for incoming connections on a network socket)"
     echo "  connect  trace syscall connect (connecting to a remote address)"
-    echo "  events   trace kernel events (listen to the kernel ring 0)"
+    echo "  event   trace kernel events (listen to the kernel ring 0)"
     echo ""
     echo "This script uses eBPF and bpftrace to passively monitor the behavior of system calls on a Linux system."
     echo "The script can be used to gain insights into system activity, detect malicious activity, or monitor system performance."
